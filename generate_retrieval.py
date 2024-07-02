@@ -20,10 +20,8 @@ import random
 import os
 
 
-def generate_random_string(length):
-    letters = string.ascii_letters + string.digits
-    return "".join(random.choice(letters) for _ in range(length))
-
+shops = [11, 12, 13]
+cashes = [1, 2, 3]
 
 items = [
     "bread",
@@ -63,25 +61,29 @@ categories = {
     "skyrim": "Gaming",
 }
 
-# Predefined prices for each item in rubles
 prices = {
-    "bread": 50,
-    "butter": 100,
-    "milk": 60,
-    "chicken": 200,
-    "cereals": 150,
-    "sugar": 40,
-    "pork": 250,
-    "tomato": 70,
-    "onion": 30,
-    "tea": 90,
-    "pasta": 80,
-    "potato": 35,
-    "eggs": 70,
-    "oil": 120,
-    "fish": 300,
-    "skyrim": 2500,
+    "bread": 49,
+    "butter": 129,
+    "milk": 69,
+    "chicken": 399,
+    "cereals": 59,
+    "sugar": 69,
+    "pork": 449,
+    "tomato": 149,
+    "onion": 29,
+    "tea": 89,
+    "pasta": 69,
+    "potato": 29,
+    "eggs": 109,
+    "oil": 119,
+    "fish": 499,
+    "skyrim": 1499,
 }
+
+
+def generate_random_string(length):
+    letters = string.ascii_letters + string.digits
+    return "".join(random.choice(letters) for _ in range(length))
 
 
 def generate_data(shop_num, cash_num, num_rows):
@@ -119,15 +121,13 @@ def generate_data(shop_num, cash_num, num_rows):
     df.to_csv(f"module-8-project/data/{shop_num}_{cash_num}.csv", index=False)
 
 
-# Example usage
-shops = [11, 12, 13]
-cashes = [1, 2, 3]
+# run script
 
 # Randomly choose 1 to 3 shops non-repeatable
-num_shops = random.randint(1, 3)
-selected_shops = random.sample(shops, num_shops)
+# num_shops = random.randint(1, 3)
+# selected_shops = random.sample(shops, num_shops)
 
-for shop in selected_shops:
+for shop in shops:
     # Randomly choose 1 to 3 cashes non-repeatable for each shop
     num_cashes = random.randint(1, 3)
     selected_cashes = random.sample(cashes, num_cashes)
