@@ -65,14 +65,33 @@ categories = {
 
 
 def generate_data(shop_num, cash_num, num_rows):
-    data = {
-        "doc_id": [generate_random_string(10) for _ in range(num_rows)],
-        "item": [random.choice(items) for _ in range(num_rows)],
-        "amount": np.random.randint(1, 4, num_rows),
-        "price": np.random.uniform(50, 300, num_rows),
+    doc_ids = [generate_random_string(10) for _ in range(num_rows)]
+    items_per_doc = {
+        doc_id: random.sample(items, random.randint(1, len(items)))
+        for doc_id in doc_ids
     }
-    data["discount"] = data["price"] * np.random.uniform(0, 0.2, num_rows)
-    data["category"] = [categories[item] for item in data["item"]]
+
+    data = {
+        "doc_id": [],
+        "item": [],
+        "amount": [],
+        "price": [],
+        "discount": [],
+        "category": [],
+    }
+
+    for doc_id, item_list in items_per_doc.items():
+        for item in item_list:
+            price = np.random.uniform(50, 300)
+            amount = np.random.randint(1, 4)
+            discount = price * np.random.uniform(0, 0.2)
+            data["doc_id"].append(doc_id)
+            data["item"].append(item)
+            data["amount"].append(amount)
+            data["price"].append(price)
+            data["discount"].append(discount)
+            data["category"].append(categories[item])
+
     df = pd.DataFrame(data)
 
     # Ensure directory exists
@@ -94,4 +113,6 @@ for shop in selected_shops:
     selected_cashes = random.sample(cashes, num_cashes)
 
     for cash in selected_cashes:
-        generate_data(shop, cash, random.randint(5, 21))
+        generate_data(
+            shop, cash, random.randint(1, 5)
+        )  # for a cash in a shop generates from 1 to 5 cheques
