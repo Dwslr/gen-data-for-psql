@@ -106,8 +106,12 @@ def generate_data(shop_num, cash_num, num_rows):
     for doc_id, item_list in items_per_doc.items():
         for item in item_list:
             price = prices[item]
-            amount = np.random.randint(1, 4)
-            discount = price * np.random.uniform(0, 0.2)
+            amount = np.random.choice(
+                [1, 2, 3, 4, 5], p=[0.4, 0.225, 0.175, 0.15, 0.05]
+            )
+            discount = price * np.random.choice(
+                [0, 0.05, 0.1, 0.15, 0.2], p=[0.5, 0.2, 0.15, 0.1, 0.05]
+            )
             data["doc_id"].append(doc_id)
             data["item"].append(item)
             data["amount"].append(amount)
