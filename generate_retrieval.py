@@ -63,6 +63,26 @@ categories = {
     "skyrim": "Gaming",
 }
 
+# Predefined prices for each item in rubles
+prices = {
+    "bread": 50,
+    "butter": 100,
+    "milk": 60,
+    "chicken": 200,
+    "cereals": 150,
+    "sugar": 40,
+    "pork": 250,
+    "tomato": 70,
+    "onion": 30,
+    "tea": 90,
+    "pasta": 80,
+    "potato": 35,
+    "eggs": 70,
+    "oil": 120,
+    "fish": 300,
+    "skyrim": 2500,
+}
+
 
 def generate_data(shop_num, cash_num, num_rows):
     doc_ids = [generate_random_string(10) for _ in range(num_rows)]
@@ -82,7 +102,7 @@ def generate_data(shop_num, cash_num, num_rows):
 
     for doc_id, item_list in items_per_doc.items():
         for item in item_list:
-            price = np.random.uniform(50, 300)
+            price = prices[item]
             amount = np.random.randint(1, 4)
             discount = price * np.random.uniform(0, 0.2)
             data["doc_id"].append(doc_id)
