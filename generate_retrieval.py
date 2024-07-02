@@ -18,6 +18,7 @@ import numpy as np
 import string
 import random
 import os
+from datetime import datetime
 
 
 shops = [11, 12, 13]
@@ -122,6 +123,9 @@ def generate_data(shop_num, cash_num, num_rows):
 
 
 # run script
+
+if datetime.today().weekday() == 6:
+    exit()
 
 # Randomly choose 1 to 3 shops non-repeatable
 # num_shops = random.randint(1, 3)
