@@ -1,4 +1,8 @@
 """
+Напишите скрипт, который генерирует N (кол-во магазинов) выгрузок в формате csv в папку data/. Формат выгрузки будет указан ниже.
+Автоматизируйте этот скрипт так, чтобы он работал каждый день, кроме воскресенья. Вы можете это сделать с помощью того инструмента, который вам удобен - cron 
+или планировщик Windows (зависит от вашей операционной системы).
+
 Файлы с выгрузками должны называться {{shop_num}}_{{cash_num}}.csv. Здесь {{shop_num}} - номер магазина, а {{cash_num}} - номер кассы. 
 В одном магазине может быть много касс - у каждой своя выгрузка. Пример названия: 11_2.csv - 11 магазин, 2 касса.
 
@@ -122,8 +126,8 @@ def generate_data(shop_num, cash_num, num_rows):
     df = pd.DataFrame(data)
 
     # Ensure directory exists
-    os.makedirs("module-8-project/data", exist_ok=True)
-    df.to_csv(f"module-8-project/data/{shop_num}_{cash_num}.csv", index=False)
+    os.makedirs("data", exist_ok=True)
+    df.to_csv(f"data/{shop_num}_{cash_num}.csv", index=False)
 
 
 # run script

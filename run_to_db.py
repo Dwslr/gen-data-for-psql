@@ -1,3 +1,9 @@
+'''
+Создайте базу данных для хранения этих данных.
+Напишите скрипт, который будет забирать данные из этой папки и заносить их в базу данных. Учтите, что в папке могут находиться и лишние файлы - игнорируйте их.
+Автоматизируйте этот скрипт, чтобы он работал каждый день.
+'''
+
 import psycopg2
 import configparser
 import os
@@ -6,7 +12,7 @@ import glob
 
 
 config = configparser.ConfigParser()
-config.read("module-8-project/config.ini")
+config.read("config.ini")
 
 csv_path_pattern = config["Files"]["csv_path"]
 
