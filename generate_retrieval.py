@@ -44,22 +44,22 @@ items = [
 ]
 
 categories = {
-    "bread": "Bakery",
-    "butter": "Dairy",
-    "milk": "Dairy",
-    "chicken": "Meat",
-    "cereals": "Cereals",
-    "sugar": "Groceries",
-    "pork": "Meat",
-    "tomato": "Vegetables",
-    "onion": "Vegetables",
-    "tea": "Beverages",
-    "pasta": "Groceries",
-    "potato": "Vegetables",
-    "eggs": "Dairy",
-    "oil": "Groceries",
-    "fish": "Seafood",
-    "skyrim": "Gaming",
+    "bread": "bakery",
+    "butter": "dairy",
+    "milk": "dairy",
+    "chicken": "meat",
+    "cereals": "cereals",
+    "sugar": "groceries",
+    "pork": "meat",
+    "tomato": "vegetables",
+    "onion": "vegetables",
+    "tea": "beverages",
+    "pasta": "groceries",
+    "potato": "vegetables",
+    "eggs": "dairy",
+    "oil": "groceries",
+    "fish": "seafood",
+    "skyrim": "gaming",
 }
 
 prices = {
@@ -97,10 +97,10 @@ def generate_data(shop_num, cash_num, num_rows):
     data = {
         "doc_id": [],
         "item": [],
+        "category": [],
         "amount": [],
         "price": [],
         "discount": [],
-        "category": [],
     }
 
     for doc_id, item_list in items_per_doc.items():
@@ -114,10 +114,10 @@ def generate_data(shop_num, cash_num, num_rows):
             )
             data["doc_id"].append(doc_id)
             data["item"].append(item)
+            data["category"].append(categories[item])
             data["amount"].append(amount)
             data["price"].append(price)
             data["discount"].append(discount)
-            data["category"].append(categories[item])
 
     df = pd.DataFrame(data)
 
