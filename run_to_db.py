@@ -4,7 +4,7 @@
 Автоматизируйте этот скрипт, чтобы он работал каждый день.
 '''
 
-import psycopg2
+import psycopg2-binary
 import configparser
 import os
 import pandas as pd
